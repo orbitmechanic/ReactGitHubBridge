@@ -1,0 +1,47 @@
+
+
+#bridge{
+    border-radius: 25px;
+    background-image: url(images/bridge.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#marketscanner{
+    border-radius: 25px;
+    background-image: url(images/MarketFromOrbit.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#entropymachine{
+    border-radius: 25px;
+    background-image: url(images/ionosphere.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#syntheticbiology{
+    border-radius: 25px;
+    background-image: url(images/biology.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#hendgefund{
+    border-radius: 25px;
+    background-image: url(images/hendge.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.fakeimg {
+    height: 200px;
+    background: #aaa;
+    border-radius: 25px;
+  }
