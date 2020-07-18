@@ -26,12 +26,19 @@
     background-image: url(images/pyramids.jpg);
     background-position: center;
     background-repeat: no-repeat;
-    headerbillboard
 }
 
 #syntheticbiology{
     border-radius: 25px;
     background-image: url(images/biology.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#tradebot{
+    border-radius: 25px;
+    background-image: url(images/utopia.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
