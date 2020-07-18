@@ -49,12 +49,47 @@
     height: 200px;
     background: #aaa;
     border-radius: 25px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.3);
+    z-index:1;
   }
 
-  #footerband{
+.light {
+    color: wheat;
+}
+.dark{
+    color: black;
+    font-weight: bolder;
+}
+.tophalf{
+    height:200px;
+    vertical-align: bottom;
+}
+.marquis{
+    text-anchor: middle;
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+    height:200px;
+    width: 750px;
+    text-shadow: black;
+    z-index: 2;
+}
+
+.tickertape{
+    text-anchor: right;
+    text-align: right;
+    vertical-align: bottom;
+    display: table-cell;
+    height:200px;
+    width: 750px;
+    text-shadow: black;
+    z-index: 3;
+}
+
+#footerband{
     margin-bottom:0;
     background-image:url(images/Clouds.jpg);
     background-repeat:no-repeat;
     background-size:cover;
     border-radius: 0px;
-  }
+}
