@@ -9,6 +9,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
   <link rel="stylesheet" type="text/css" href="index.css">
+  <script src="logic/coingeko.js"></script>
 </head>
 <body style="background-color:rgba(41, 41, 41, 0.404)">
 
@@ -41,11 +42,11 @@
   <div class="row">
     <div class="col-sm-4">
       <h2>Your Captain</h2>
-      <h5>File Photo:</h5>
-      <div class="fakeimg" id="bridge"></div>
-      <p>Cryptocurrency explorer.  Recovering rocket scientist.  Legacy programmer.</p>
-      <h3></h3>
-      <p>Resume Certifications Permits</p>
+      <p>Cryptocurrency explorer.</p>
+      <h6>File Photo:</h6>
+      <div class="fakeimg shady" id="bridge"></div>
+      <br>
+      <h5>Resume, Certifications, and Permits:</h5>
       <ul class="nav nav-pills flex-column">
         <li class="nav-item">
           <a class="nav-link active" href="#">GitHub</a>
@@ -65,33 +66,43 @@
     <div class="col-sm-8">
       <h2>Crypto Market Monitor</h2>
       <h5>Crypto markets scanned from orbit</h5>
-      <div class="fakeimg" id="marketscanner">
-        <h2 class="marquis tophalf dark">Coming Soon</h2>
-        <h3 class="tickertape tophalf light">BitCoinPrice is down blah%</h3>
-      </div>
+      <h5><i>(IoT BootCamp Project 1)</i></h5>
+      <div class="flex-containter projectboard shady" id="marketscanner">
+        <div><h2 class="marquisText dark">Coming Soon</h2></div>
+        <div class="flex-containter assetcells">
+          <div><button type="button" 
+            class="btn btn-default btn-sm pinger shady"
+            onclick="previewPrice()">Ping</button></div>
+          <div><p class="assettext light" id="tickerquote">Ethereum: $blah. up 1.3%</p></div>
+        </div> 
+      </div> 
       <br>
       <h2>Coin Pyramid</h2>
       <h5>Stacking game of chance.</h5>
-      <div class="fakeimg" id="pyramid">
-        <h2 class="marquis light">Coming Soon</h2>
+      <h5><i>(IoT Solidity 201 Project)</i></h5>
+      <div class="flex-containter projectboard shady" id="pyramid">
+        <div><h2 class="marquisText light">Coming Soon</h2></div>
       </div>
       <br>
       <h2>CryptoBunnies</h2>
       <h5>Synthetic biology on the blockchain</h5>
-      <div class="fakeimg" id="syntheticbiology">
-        <h2 class="marquis light">Coming Soon</h2>
+      <h5><i>(IoT BootCamp Project 2)</i></h5>
+      <div class="flex-containter projectboard shady" id="syntheticbiology">
+        <div><h2 class="marquisText light">Coming Soon</h2></div>
       </div>
       <br>
       <h2>Project Utopia</h2>
-      <h5>Off-chain trading using synthetic biology.</h5>
-      <div class="fakeimg" id="tradebot">
-        <h2 class="marquis light">Coming Soon</h2>
+      <h5>Exo-chain synthetic-biology-driven trading.</h5>
+      <h5><i>(IoT Technical Analysis/Trading Bots)</i></h5>
+      <div class="flex-containter projectboard shady" id="tradebot">
+        <div><h2 class="marquisText light">Coming Soon</h2></div>
       </div>
       <br>
-      <h2>The Shuffle</h2>
-      <h5>On-chain DeFi autonomous value management</h5>
-      <div class="fakeimg" id="hendgefund">
-        <h2 class="marquis dark">Coming Soon</h2>
+      <h2>DethPakt</h2>
+      <h5>On-chain automated post-mortum asset transfer.</h5>
+      <h5><i>(IoT BootCamp Project 3)</i></h5>
+      <div class="flex-containter projectboard shady" id="lastwill">
+        <div><h2 class="marquisText light">Coming Soon</h2></div>
       </div>
       <br><br>
     </div>
@@ -99,7 +110,7 @@
 </div>
 
 <div class="jumbotron text-center" id="footerband">
-    <H2>Sponsored by Orbital Investments LLC.</H2>
+    <H2>An Orbital Investments LLC. Production.</H2>
 </div>
 
 </body>

@@ -12,53 +12,50 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
-
-#marketscanner{
-    border-radius: 25px;
-    background-image: url(images/MarketFromOrbit.jpg);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-#pyramid{
-    border-radius: 25px;
-    background-image: url(images/pyramids.jpg);
-    background-position: center;
-    background-repeat: no-repeat;
-}
-
-#syntheticbiology{
-    border-radius: 25px;
-    background-image: url(images/biology.jpg);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-#tradebot{
-    border-radius: 25px;
-    background-image: url(images/utopia.jpg);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-#hendgefund{
-    border-radius: 25px;
-    background-image: url(images/collage.jpg);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
 .fakeimg {
     height: 200px;
     background: #aaa;
     border-radius: 25px;
+    position:relative;
+}
+
+.shady {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.3);
-    z-index:1;
-  }
+}
+
+.projectboard{
+    display: flex;
+    flex-flow: column nowrap;
+    max-lines: 2;
+    border-radius: 25px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 200px;
+}
+.marquisText {
+    text-align: center;
+    height:30px;
+    margin-top: 80px;
+    vertical-align: bottom;
+}
+
+.assetcells{
+    flex-flow: row nowrap;
+}
+
+.assettext{
+    margin-left:40px;
+    text-align: left;
+    vertical-align: bottom;
+}
+
+.pinger{
+    margin: 0;
+    transform: translateX(-50%) translateY(90%);
+    background-color: black;
+    color:wheat;
+}
 
 .light {
     color: wheat;
@@ -67,30 +64,29 @@
     color: black;
     font-weight: bolder;
 }
-.tophalf{
-    height:200px;
-    vertical-align: bottom;
-}
-.marquis{
-    text-anchor: middle;
-    text-align: center;
-    display: table-cell;
-    vertical-align: middle;
-    height:200px;
-    width: 750px;
-    text-shadow: black;
-    z-index: 2;
+
+#marketscanner{
+    background-image: url(images/MarketFromOrbit.jpg);
 }
 
-.tickertape{
-    text-anchor: right;
-    text-align: right;
-    vertical-align: bottom;
-    display: table-cell;
-    height:200px;
-    width: 750px;
-    text-shadow: black;
-    z-index: 3;
+#pyramid{
+    background-image: url(images/pyramids.jpg);
+}
+
+#syntheticbiology{
+    background-image: url(images/biology.jpg);
+}
+
+#tradebot{
+    background-image: url(images/utopia.jpg);
+}
+
+#lastwill{
+    background-image: url(images/briefcase.jpg);
+}
+
+#shuffle{
+    background-image: url(images/collage.jpg);
 }
 
 #footerband{
