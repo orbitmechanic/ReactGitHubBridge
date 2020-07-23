@@ -1,0 +1,50 @@
+#headerbillboard{
+    padding:30px;
+    background-image:url(images/eclipseBnW.jpg);
+    background-repeat:no-repeat;
+    background-size: cover;
+    border-radius: 0px;
+    height:40px
+}
+
+#bragbar {
+    background-color:black;
+    color: wheat;
+    padding:30px;
+    margin:0px;
+}
+
+.transparent {
+    opacity:0.5;
+    fill-opacity:0.0;
+}
+
+.opaque {
+    opacity:1.0;
+    fill-opacity: 1.0;
+}
+
+.centered {
+    align-self: center;
+    text-align: center;
+}
+
+.dark {
+    background-color:darkslategray;
+}
+
+.dim {
+    background-color:darkgray;
+}
+
+.light {
+    background-color: grey;
+}
+
+.bright{
+    background-color: wheat;
+}
+
+.shady {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.3);
+}
