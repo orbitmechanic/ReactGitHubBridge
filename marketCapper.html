@@ -21,79 +21,60 @@
 
 <body class="bg-dark">
 
-  <nav class="navbar navbar-expand-lg navbar-light bg-light" id="headerbillboard">
-
-    <!-- Image and text -->
-    <nav class="navbar navbar-light">
-      <a class="navbar-brand" href="#">
-        <img src="images/cap.png" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy" href="#">
-        MarketCapper
-      </a>
-    </nav>
-
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-      
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Cryptobunnies <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Exchangers</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Poduncts</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Pools</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Yearn</a>
-        </li>
-      </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Lerch" aria-label="Search">
-        <button class="btn btn-secondary" type="submit">Lerch</button>
-      </form>
-    </div>
-  </nav>
-
-  <div class="jumbotron jumbotron-fluid" id="bragbar">
-    <div class="container">
-      <h5 class="centered">Top 100 Cryptocurrencies by Market Capitalization</h5>
-    </div>
-  </div>
-
-  <nav class="navbar navbar-expand-sm bg-light navbar-light">
-    <ul class="navbar-nav">
+  <nav class="navbar navbar-expand-sm navbar-light bg-light justify-content-between" id="headerbillboard">
+    <ul class="navbar-nav align-items-center">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Cryptocurrencies</a>
+        <!-- Image and text -->
+        <nav class="navbar navbar-light">
+          <a class="navbar-brand" href="#">
+            <img src="images/cap.png" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy" href="#">
+            MarketCapper
+          </a>
+        </nav>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Exchangers</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Matchlist</a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Cryptobunnies <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Exchangers</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Poduncts</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Pools</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Yearn</a>
+            </li>
+          </ul>
+        </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Fitters</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Units</a>
-      </li>
-      <li class="nav-item">
-        <button class="btn btn-secondary" type="submit">Next Bunch</button>
-      </li>
-      <li class="nav-item">
-        <button class="btn btn-secondary" type="submit">View All</button>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="Lerch" aria-label="Search">
+          <button class="btn btn-secondary" type="submit">Lerch</button>
+        </form>
       </li>
     </ul>
   </nav>
 
+  <div class="jumbotron jumbotron-fluid" id="bragbar">
+    <div class="container">
+      <h5 class="centered">Top 100 Cryptocurrencies by Market CaPiTaLiZaTiOn</h5>
+    </div>
+  </div>
+
   <div class="container"> 
-    <table class="table table-dark table-hover table-striped">
+    <table class="table table-dark table-hover table-striped table-responsive-sm">
       <thead>
         <tr>
           <th>Rank</th>
@@ -106,7 +87,7 @@
           <th>Price Graph (7d)</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody class='tabletag'>
         <tr>
           <td>1</td>
           <td>BobCoin</td>
@@ -129,7 +110,7 @@
         </tr>
         <tr>
           <td>3</td>
-          <td>Dodgecoin</td>
+          <td>RU4Real</td>
           <td>big numbers!</td>
           <td>3,894,798,243</td>
           <td>3</td>
