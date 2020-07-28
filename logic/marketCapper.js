@@ -21,7 +21,7 @@ function url() {
 
 class Coin{ // adapter
     constructor(dataObj){
-        console.log('Minting coin data:' + dataObj.name);
+        // console.log('Minting coin data:' + dataObj.name);
         this.id                                     = dataObj.id;
         this.symbol                                 = dataObj.symbol;
         this.name                                   = dataObj.name;
@@ -50,7 +50,7 @@ class Coin{ // adapter
     } // default constructor
     toString(){
         // convert to an html/bootstrap <tr>
-        console.log('Creating table row for: ' + this.name);
+        // console.log('Creating table row for: ' + this.name);
         let dirTag = 'sidewaysclass';
         let htmlstr = '';
             htmlstr += '<tr>\n';
@@ -76,13 +76,14 @@ let coinsDB = [];
 
 async function importMarketData() {
     // import data
-    console.log('Loading table data.');
+    console.log('Loading table data...');
     try {
         const response = await fetch(url());
         let coins = await response.json();
         while(coins.length > 0) {
             coinsDB.push(new Coin(coins.pop()));
         }; // cast array to Coin class.
+        coinsDB = coinsDB.reverse(); // Undo FILO
     } catch(error) {
         console.log('importMarketData() failure: ' + error);
     }; // try-catch
@@ -91,12 +92,25 @@ async function importMarketData() {
 async function displayMarketData(){
     // Push market data to table
     console.log('Displaying table data.');
-    
-    await importMarketData();
-    let generatedTable = coinsDB.reverse().toString();
-    $('.tabletag').html(generatedTable);
-    
-    
-} // displayMarketData()
+    try {
+        await importMarketData();
+        $('.tabletag').html(coinsDB.toString());
+    } catch {
+        console.log('displayMarketData() failure: ' + error);
+    }
+}; // displayMarketData()
+
+async function sortby(field){
+    // Sort coinsDB by given field
+    console.log('Sorting list by: ' + field);
+    try {
+        coinsDB = sort(function(a,b){
+            return a[field] - b[field];
+        }); // compare function, sort()
+        await displayMarketData();
+    } catch {
+        console.log('sortby() failure: ' + error); 
+    } // try-catch
+}; // sortby()
 
 window.onload = displayMarketData();
