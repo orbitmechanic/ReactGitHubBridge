@@ -9,55 +9,94 @@ const API_PARAMS   = ['&order=market_cap_desc',
                     '&page=1',
                     '&sparkline=false',
                     '&price_change_percentage=24h'];
-const url = [API_URL, API_CMD, API_QUERY, API_PARAMS.toString].toString;
 
-class Coin{ // (Structural: Adapter from JSON to BootStrap table row)
+function url() {
+    // assemble the URL
+    console.log('assmbling url:')
+    const gogetem = [API_URL, API_CMD, API_QUERY, 
+        API_PARAMS.join('').toString()].join('').toString();
+    console.log(gogetem);
+    return gogetem;
+};
+
+class Coin{ // adapter
     constructor(dataObj){
-        this.rank       = dataObj.market_cap_rank;
-        this.name       = dataObj.id;
-        this.marketCap  = dataObj.market_cap;
-        this.price      = dataObj.current_price;
-        this.volume24h  = dataObj.total_volume;
-        this.circulatingSupply = dataObj.circulating_supply;
-        this.change24h  = dataObj.price_change_percentage_24h;
+        console.log('Minting coin data:' + dataObj.name);
+        this.id                                     = dataObj.id;
+        this.symbol                                 = dataObj.symbol;
+        this.name                                   = dataObj.name;
+        this.image                                  = dataObj.image;
+        this.current_price                          = dataObj.current_price;
+        this.market_cap                             = dataObj.market_cap;
+        this.market_cap_rank                        = dataObj.market_cap_rank;
+        this.total_volume                           = dataObj.total_volume;
+        this.high_24h                               = dataObj.high_24h;
+        this.low_24h                                = dataObj.low_24h;
+        this.price_change_24h                       = dataObj.price_change_24h; 
+        this.price_change_percentage_24h            = dataObj.price_change_percentage_24h;
+        this.market_cap_change_24h                  = dataObj.market_cap_change_24h;
+        this.market_cap_change_percentage_24h       = dataObj.market_cap_change_percentage_24h;
+        this.circulating_supply                     = dataObj.circulating_supply;
+        this.total_supply                           = dataObj.total_supply;
+        this.ath                                    = dataObj.ath;
+        this.ath_change_percentage                  = dataObj.ath_change_percentage;
+        this.ath_date                               = dataObj.ath_date;
+        this.atl                                    = dataObj.atl;
+        this.atl_change_percentage                  = dataObj.atl_change_percentage; 
+        this.atl_date                               = dataObj.atl_date;
+        this.roi                                    = dataObj.roi;
+        this.last_updated                           = dataObj.last_updated;
+        this.price_change_percentage_7d_in_currency = dataObj.price_change_percentage_7d_in_currency;
     } // default constructor
     toString(){
         // convert to an html/bootstrap <tr>
+        console.log('Creating table row for: ' + this.name);
+        let dirTag = 'sidewaysclass';
         let htmlstr = '';
             htmlstr += '<tr>\n';
-            htmlstr += '    <td>' + this.rank + '</td>\n';
+            htmlstr += '    <td>' + this.market_cap_rank + '</td>\n';
             htmlstr += '    <td>' + this.name + '</td>\n';
-            htmlstr += '    <td>' + this.marketCap + ' ' + DENOMINATION +'</td>\n';
-            htmlstr += '    <td>' + this.price +  ' ' + DENOMINATION + '</td>\n';
-            htmlstr += '    <td>' + this.volume24h + '</td>\n';
-            htmlstr += '    <td>' + this.circulatingSupply + '</td>\n';
+            htmlstr += '    <td>' + this.market_cap + ' ' + DENOMINATION +'</td>\n';
+            htmlstr += '    <td>' + this.current_price +  ' ' + DENOMINATION + '</td>\n';
+            htmlstr += '    <td>' + this.total_volume + '</td>\n';
+            htmlstr += '    <td>' + this.circulating_supply + '</td>\n';
             if (this.change24h > 0){
                 dirTag = 'upperclass';
             } else if (this.change24h < 0) {
                 dirTag = 'lowerclass';
-            } else {
-                dirTag = 'sidewaysclass';
-            }
-            htmlstr += "    <td class='" + dirTag + "'>" + this.change24h + '%</td>\n';
+            }; // label direction
+            htmlstr += "    <td class='" + dirTag + "'>" + this.price_change_24h + '%</td>\n';
             htmlstr += '    <td>' + 'Purdy Picture' + '</td>\n';
             htmlstr += '</tr>\n';
         return htmlstr;
     } // totr()
 } // class Coin
 
-let Coins = []; // the back-end (flat) database
+let coinsDB = [];
 
 async function importMarketData() {
     // import data
+    console.log('Loading table data.');
     try {
-        const response = await fetch(url);
-        const coins = await response1.json();
-        coins.foreach(function(coin){
-            Coins.push(new Coin(coin));
-        }) // coins.foreach
+        const response = await fetch(url());
+        let coins = await response.json();
+        while(coins.length > 0) {
+            coinsDB.push(new Coin(coins.pop()));
+        }; // cast array to Coin class.
     } catch(error) {
-        console.log('oops. ' + error);
+        console.log('importMarketData() failure: ' + error);
     }; // try-catch
-    $('.tabletag').html(Coins.toString());
 }; // importMarketData()
 
+async function displayMarketData(){
+    // Push market data to table
+    console.log('Displaying table data.');
+    
+    await importMarketData();
+    let generatedTable = coinsDB.reverse().toString();
+    $('.tabletag').html(generatedTable);
+    
+    
+} // displayMarketData()
+
+window.onload = displayMarketData();
