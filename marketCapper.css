@@ -49,11 +49,16 @@
 }
 
 .upperclass {
-    color: green;
+    color: lightgreen;
 }
 .sidewaysclass{
     color: white;
 }
 .lowerclass {
     color:red;
+}
+
+.coinicon {
+    width: 25px;
+    height: 25px;
 }

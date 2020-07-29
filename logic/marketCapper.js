@@ -55,24 +55,24 @@ class Coin{ // adapter
         let htmlstr = '';
             htmlstr += '<tr>\n';
             htmlstr += '    <td>' + this.market_cap_rank + '</td>\n';
-            htmlstr += '    <td>' + this.name + '</td>\n';
-            htmlstr += '    <td>' + this.market_cap + ' ' + DENOMINATION +'</td>\n';
-            htmlstr += '    <td>' + this.current_price +  ' ' + DENOMINATION + '</td>\n';
-            htmlstr += '    <td>' + this.total_volume + '</td>\n';
-            htmlstr += '    <td>' + this.circulating_supply + '</td>\n';
-            if (this.change24h > 0){
+            htmlstr += '    <td class="text-left"><img src="' + this.image + '" class="coinicon">   ' + this.name + '</td>\n';
+            htmlstr += '    <td>' + this.market_cap.toLocaleString() + '</td>\n';
+            htmlstr += '    <td>' + this.current_price.toPrecision(3) + '</td>\n';
+            htmlstr += '    <td>' + this.total_volume.toLocaleString() + '</td>\n';
+            htmlstr += '    <td>' + this.circulating_supply.toLocaleString() + '</td>\n';
+            if (this.price_change_percentage_24h > 0){
                 dirTag = 'upperclass';
-            } else if (this.change24h < 0) {
+            } else if (this.price_change_percentage_24h < 0) {
                 dirTag = 'lowerclass';
             }; // label direction
-            htmlstr += "    <td class='" + dirTag + "'>" + this.price_change_24h + '%</td>\n';
-            htmlstr += '    <td>' + 'Purdy Picture' + '</td>\n';
+            htmlstr += "    <td class='" + dirTag + "'>" + this.price_change_percentage_24h.toPrecision(3) + '%</td>\n';
+            htmlstr += '    <td>' + '[Purdy Picture]' + '</td>\n';
             htmlstr += '</tr>\n';
         return htmlstr;
     } // totr()
 } // class Coin
 
-let coinsDB = [];
+let coinsDB = [];  // singleton front-end database
 
 async function importMarketData() {
     // import data
