@@ -72,7 +72,7 @@ class Coin{ // adapter
             }; // label direction
             htmlstr += "    <td class='" + dirTag + "'>" + 
                 this['price_change_percentage_' + PERIOD + '_in_currency'].toPrecision(3) + '%</td>\n';
-            htmlstr += '    <td>' + '[Purdy Picture]' + '</td>\n';
+            //htmlstr += '    <td>' + '[Purdy Picture]' + '</td>\n';
             htmlstr += '</tr>\n';
         return htmlstr;
     } // totr()
