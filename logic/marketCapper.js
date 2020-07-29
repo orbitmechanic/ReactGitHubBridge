@@ -14,7 +14,7 @@ function url() {
     // assemble the URL
     console.log('assmbling url:')
     const gogetem = [API_URL, API_CMD, API_QUERY, 
-        API_PARAMS.join('').toString()].join('').toString();
+        API_PARAMS.join('')].join('');
     console.log(gogetem);
     return gogetem;
 };
@@ -100,17 +100,30 @@ async function displayMarketData(){
     }
 }; // displayMarketData()
 
+window.onload = displayMarketData();
+
 async function sortby(field){
     // Sort coinsDB by given field
     console.log('Sorting list by: ' + field);
     try {
-        coinsDB = sort(function(a,b){
+        coinsDB = coinsDB.sort(function(a,b){
             return a[field] - b[field];
         }); // compare function, sort()
         await displayMarketData();
-    } catch {
+    } catch (error) {
         console.log('sortby() failure: ' + error); 
     } // try-catch
 }; // sortby()
 
-window.onload = displayMarketData();
+const columnNames = ['market_cap_rank',
+                    'name',
+                    'market_cap',
+                    'current_price',
+                    'total_volume',
+                    'circulating_supply',
+                    'price_change_percentage_24h'];
+
+for(columnName in columnNames){
+    $('#' + columnName).click(sortby(columnName));
+};
+    
