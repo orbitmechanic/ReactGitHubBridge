@@ -2,19 +2,23 @@
 
 const API_URL      = 'https://api.coingecko.com/api/v3/';
 const API_CMD      = 'coins/markets';
-const DENOMINATION = 'usd'
-const API_QUERY    = '?vs_currency=usd';
+let   DENOMINATION = 'usd'
+let   API_QUERY    = '?vs_currency=';
+let   PERIOD       = '24h';
 const API_PARAMS   = ['&order=market_cap_desc',
                     '&per_page=100', 
                     '&page=1',
                     '&sparkline=false',
-                    '&price_change_percentage=24h'];
+                    '&price_change_percentage='];
+
+let coinsDB = [];  // singleton front-end database
+let lastSortedBy = '';  // state machine: reverse if repeated clicks.
 
 function url() {
     // assemble the URL
     console.log('assmbling url:')
-    const gogetem = [API_URL, API_CMD, API_QUERY, 
-        API_PARAMS.join('')].join('');
+    const gogetem = [API_URL, API_CMD, API_QUERY, DENOMINATION,
+        API_PARAMS.join(''),PERIOD].join('');
     console.log(gogetem);
     return gogetem;
 };
@@ -46,7 +50,8 @@ class Coin{ // adapter
         this.atl_date                               = dataObj.atl_date;
         this.roi                                    = dataObj.roi;
         this.last_updated                           = dataObj.last_updated;
-        this.price_change_percentage_7d_in_currency = dataObj.price_change_percentage_7d_in_currency;
+        this['price_change_percentage_' + PERIOD + '_in_currency'] = 
+            dataObj['price_change_percentage_' + PERIOD + '_in_currency']; // periods vary
     } // default constructor
     toString(){
         // convert to an html/bootstrap <tr>
@@ -65,14 +70,13 @@ class Coin{ // adapter
             } else if (this.price_change_percentage_24h < 0) {
                 dirTag = 'lowerclass';
             }; // label direction
-            htmlstr += "    <td class='" + dirTag + "'>" + this.price_change_percentage_24h.toPrecision(3) + '%</td>\n';
+            htmlstr += "    <td class='" + dirTag + "'>" + 
+                this['price_change_percentage_' + PERIOD + '_in_currency'].toPrecision(3) + '%</td>\n';
             htmlstr += '    <td>' + '[Purdy Picture]' + '</td>\n';
             htmlstr += '</tr>\n';
         return htmlstr;
     } // totr()
 } // class Coin
-
-let coinsDB = [];  // singleton front-end database
 
 async function importMarketData() {
     // import data
@@ -80,10 +84,14 @@ async function importMarketData() {
     try {
         const response = await fetch(url());
         let coins = await response.json();
+        while(coinsDB.length > 0){
+            coinsDB.pop();
+        } // Destroy previous data.
         while(coins.length > 0) {
             coinsDB.push(new Coin(coins.pop()));
         }; // cast array to Coin class.
         coinsDB = coinsDB.reverse(); // Undo FILO
+        lastSortedBy = 'market_cap_rank'; 
     } catch(error) {
         console.log('importMarketData() failure: ' + error);
     }; // try-catch
@@ -97,33 +105,63 @@ async function displayMarketData(){
         $('.tabletag').html(coinsDB.toString());
     } catch {
         console.log('displayMarketData() failure: ' + error);
-    }
+    } // try-catch
+
 }; // displayMarketData()
 
-window.onload = displayMarketData();
+async function updateDenomination(denomString){
+    console.log('Updating denomination to ' + denomString);
+    DENOMINATION = denomString;
+    displayMarketData();
+    $('#priceButton').text('Price (' + DENOMINATION + ')');
+    $('#marketCapButton').text('Market Cap (' + DENOMINATION +')');
+    $('#volumeButton').text('Volume (' + DENOMINATION + '/' + PERIOD + ')');
+} // updateDenomination()
+
+async function updatePeriod(periodString){
+    console.log('Updating period to ' + periodString);
+    PERIOD = periodString;
+    displayMarketData();
+    $('#volumeButton').text('Volume (' + DENOMINATION + '/' + PERIOD + ')');
+    $('#periodButton').text('Change (' + PERIOD + ')');
+} // updateDenomination()
 
 async function sortby(field){
-    // Sort coinsDB by given field
-    console.log('Sorting list by: ' + field);
+    // Sort coinsDB array by given Coin class field name
+    console.log('Sorting list by: ' + field + '...');
     try {
-        coinsDB = coinsDB.sort(function(a,b){
-            return a[field] - b[field];
-        }); // compare function, sort()
-        await displayMarketData();
+        switch(field){
+            case 'name': // sort by alpha
+                coinsDB = coinsDB.sort(function(a,b){
+                    if (b.name.toLowerCase() > a.name.toLowerCase()) {
+                        return -1;
+                    }
+                    if (a.name.toLowerCase() > b.name.toLowerCase()) {
+                        return 1;
+                    }
+                    return 0;
+                }); // compare function, sort()
+                break;
+            default: // sort by number
+                coinsDB = coinsDB.sort(function(a,b){
+                    return b[field] - a[field];
+                }); // compare function, sort()
+        } // switch()
+        if (lastSortedBy == field){
+            // console.log('Toggling click detected.  Reversing order.')
+            coinsDB = coinsDB.reverse();
+            lastSortedBy = ''; // un-toggle state
+        } else {
+            // console.log('Sorting complete.  Last sorted by: ' + lastSortedBy);
+            lastSortedBy = field;  // update state.
+        } // Sorting order check
+        // console.log('Redrawing table...');
+        $('.tabletag').html(coinsDB.toString());
+        // console.log('Redraw complete.')
     } catch (error) {
         console.log('sortby() failure: ' + error); 
     } // try-catch
+    // console.log('End sortby().');
 }; // sortby()
 
-const columnNames = ['market_cap_rank',
-                    'name',
-                    'market_cap',
-                    'current_price',
-                    'total_volume',
-                    'circulating_supply',
-                    'price_change_percentage_24h'];
-
-for(columnName in columnNames){
-    $('#' + columnName).click(sortby(columnName));
-};
-    
+window.onload = displayMarketData();
