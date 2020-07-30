@@ -6,7 +6,11 @@
     border-radius: 0px;
 }
 
+
 #bragbar {
+    background-image:url(../images/MarketFromOrbit.jpg);
+    background-repeat:no-repeat;
+    background-size: cover;
     background-color:black;
     color: wheat;
     padding:30px;
@@ -45,7 +49,7 @@
 }
 
 .shady {
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.3);
 }
 
 .upperclass {
