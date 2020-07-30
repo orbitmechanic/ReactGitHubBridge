@@ -63,15 +63,19 @@ class Coin{ // adapter
         let htmlstr = '';
             htmlstr += '<tr>\n';
             htmlstr += '    <td><b>' + this.market_cap_rank + '</b></td>\n';
-            htmlstr += '    <td class="text-left"><img src="' + this.image + '" class="coinicon">    <b>' + this.name + '</b></td>\n';
-            htmlstr += '    <td><b>' + this.market_cap.toLocaleString() + '</b> <i>{' + (100*this.market_cap/totalMarketCap).toPrecision(3) + '%}</i></td>\n';
+            htmlstr += '    <td class="text-left"><img src="' + this.image + 
+                '" class="coinicon">    <b>' + this.name + '</b></td>\n';
+            htmlstr += '    <td><b>' + this.market_cap.toLocaleString() + 
+                '</b> <i>{' + (100*this.market_cap/totalMarketCap).toPrecision(3) + '%}</i></td>\n';
             if ((DENOMINATION == 'usd') | (DENOMINATION =='eur')) { // display in currency to nearest penny.
                 htmlstr += '    <td><b>' + this.current_price.toFixed(2) + '</b></td>\n';
             } else { // display in tokens to 3 significant figures.
                 htmlstr += '    <td><b>' + this.current_price.toPrecision(3) + '</b></td>\n';
             };
-            htmlstr += '    <td><b>' + this.total_volume.toLocaleString() + '</b> <i>{' + (100*this.total_volume/totalVolume).toPrecision(3) + '%}</i></td>\n';
-            htmlstr += '    <td><b>' + this.circulating_supply.toLocaleString() + '</b></td>\n';
+            htmlstr += '    <td><b>' + this.total_volume.toLocaleString() + 
+                '</b> <i>{' + (100*this.total_volume/totalVolume).toPrecision(3) + '%}</i></td>\n';
+            htmlstr += '    <td><b>' + this.circulating_supply.toLocaleString() + '</b> ' +
+                this.symbol +'</td>\n';
             if (this['price_change_percentage_' + PERIOD + '_in_currency'] > 0){
                 dirTag = 'upperclass';
             } else if (this['price_change_percentage_' + PERIOD + '_in_currency'] < 0) {
@@ -117,9 +121,12 @@ async function importMarketData() {
 
 async function displayMarketCapData(){
     // Sum total market cap and index value.
-    $('#totalMarketCapText').text('Top 100 Market cap: ' + totalMarketCap.toLocaleString() + ' (' + DENOMINATION + ')');
-    $('#top100Index').text('Crypto100 Index: ' + totalBasket.toLocaleString() + ' (' + DENOMINATION + ')');
-    $('#totalTradingVolume').text('Total 24-hour volume traded: ' + totalVolume.toLocaleString() + ' (' + DENOMINATION + ')');
+    $('#totalMarketCapText').text('Top 100 Market cap: ' +
+         totalMarketCap.toLocaleString() + ' (' + DENOMINATION + ')');
+    $('#top100Index').text('Crypto100 Index: ' + 
+        totalBasket.toLocaleString() + ' (' + DENOMINATION + ')');
+    $('#totalTradingVolume').text('Total 24-hour "volume" traded: ' + 
+        totalVolume.toLocaleString() + ' (' + DENOMINATION + ')');
 };
 
 async function displayMarketData(){
