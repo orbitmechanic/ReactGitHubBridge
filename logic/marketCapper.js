@@ -3,7 +3,7 @@
 const API_URL      = 'https://api.coingecko.com/api/v3/';
 const API_CMD      = 'coins/markets';
 let   DENOMINATION = 'usd'
-let   API_QUERY    = '?vs_currency=';
+const API_QUERY    = '?vs_currency=';
 let   PERIOD       = '24h';
 const API_PARAMS   = ['&order=market_cap_desc',
                     '&per_page=100', 
@@ -65,9 +65,9 @@ class Coin{ // adapter
             htmlstr += '    <td>' + this.current_price.toPrecision(3) + '</td>\n';
             htmlstr += '    <td>' + this.total_volume.toLocaleString() + '</td>\n';
             htmlstr += '    <td>' + this.circulating_supply.toLocaleString() + '</td>\n';
-            if (this.price_change_percentage_24h > 0){
+            if (this['price_change_percentage_' + PERIOD + '_in_currency'] > 0){
                 dirTag = 'upperclass';
-            } else if (this.price_change_percentage_24h < 0) {
+            } else if (this['price_change_percentage_' + PERIOD + '_in_currency'] < 0) {
                 dirTag = 'lowerclass';
             }; // label direction
             htmlstr += "    <td class='" + dirTag + "'>" + 
