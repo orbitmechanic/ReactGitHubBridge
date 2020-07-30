@@ -1,5 +1,5 @@
 #headerbillboard{
-    background-image:url(images/eclipseBnW.jpg);
+    background-image:url(../images/eclipseBnW.jpg);
     background-repeat:no-repeat;
     background-size: cover;
     border-radius: 0px;
@@ -7,7 +7,7 @@
 
 #bridge{
     border-radius: 25px;
-    background-image: url(images/bridge.jpg);
+    background-image: url(../images/bridge.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -66,32 +66,32 @@
 }
 
 #marketscanner{
-    background-image: url(images/MarketFromOrbit.jpg);
+    background-image: url(../images/MarketFromOrbit.jpg);
 }
 
 #pyramid{
-    background-image: url(images/pyramids.jpg);
+    background-image: url(../images/pyramids.jpg);
 }
 
 #syntheticbiology{
-    background-image: url(images/biology.jpg);
+    background-image: url(../images/biology.jpg);
 }
 
 #tradebot{
-    background-image: url(images/utopia.jpg);
+    background-image: url(../images/utopia.jpg);
 }
 
 #lastwill{
-    background-image: url(images/briefcase.jpg);
+    background-image: url(../images/briefcase.jpg);
 }
 
 #shuffle{
-    background-image: url(images/collage.jpg);
+    background-image: url(../images/collage.jpg);
 }
 
 #footerband{
     margin-bottom:0;
-    background-image:url(images/Clouds.jpg);
+    background-image:url(../images/Clouds.jpg);
     background-repeat:no-repeat;
     background-size:cover;
     border-radius: 0px;
