@@ -11,8 +11,11 @@ const API_PARAMS   = ['&order=market_cap_desc',
                     '&sparkline=false',
                     '&price_change_percentage='];
 
-let coinsDB = [];  // singleton front-end database
+let coinsDB = [];       // singleton front-end database
 let lastSortedBy = '';  // state machine: reverse if repeated clicks.
+let totalMarketCap = 0; // Global to allow market dominance calculation.
+let totalBasket = 0;
+let totalVolume = 0
 
 function url() {
     // assemble the URL
@@ -59,19 +62,28 @@ class Coin{ // adapter
         let dirTag = 'sidewaysclass';
         let htmlstr = '';
             htmlstr += '<tr>\n';
-            htmlstr += '    <td>' + this.market_cap_rank + '</td>\n';
-            htmlstr += '    <td class="text-left"><img src="' + this.image + '" class="coinicon">   ' + this.name + '</td>\n';
-            htmlstr += '    <td>' + this.market_cap.toLocaleString() + '</td>\n';
-            htmlstr += '    <td>' + this.current_price.toPrecision(3) + '</td>\n';
-            htmlstr += '    <td>' + this.total_volume.toLocaleString() + '</td>\n';
-            htmlstr += '    <td>' + this.circulating_supply.toLocaleString() + '</td>\n';
+            htmlstr += '    <td><b>' + this.market_cap_rank + '</b></td>\n';
+            htmlstr += '    <td class="text-left"><img src="' + this.image + '" class="coinicon">    <b>' + this.name + '</b></td>\n';
+            htmlstr += '    <td><b>' + this.market_cap.toLocaleString() + '</b> <i>{' + (100*this.market_cap/totalMarketCap).toPrecision(3) + '%}</i></td>\n';
+            if ((DENOMINATION == 'usd') | (DENOMINATION =='eur')) { // display in currency to nearest penny.
+                htmlstr += '    <td><b>' + this.current_price.toFixed(2) + '</b></td>\n';
+            } else { // display in tokens to 3 significant figures.
+                htmlstr += '    <td><b>' + this.current_price.toPrecision(3) + '</b></td>\n';
+            };
+            htmlstr += '    <td><b>' + this.total_volume.toLocaleString() + '</b> <i>{' + (100*this.total_volume/totalVolume).toPrecision(3) + '%}</i></td>\n';
+            htmlstr += '    <td><b>' + this.circulating_supply.toLocaleString() + '</b></td>\n';
             if (this['price_change_percentage_' + PERIOD + '_in_currency'] > 0){
                 dirTag = 'upperclass';
             } else if (this['price_change_percentage_' + PERIOD + '_in_currency'] < 0) {
                 dirTag = 'lowerclass';
             }; // label direction
-            htmlstr += "    <td class='" + dirTag + "'>" + 
-                this['price_change_percentage_' + PERIOD + '_in_currency'].toPrecision(3) + '%</td>\n';
+            if (this['price_change_percentage_' + PERIOD + '_in_currency']){
+                htmlstr += "    <td class='" + dirTag + "'><b>" + 
+                    this['price_change_percentage_' + PERIOD + '_in_currency'].toPrecision(3) + '%</b></td>\n';
+            } else {
+                htmlstr += "    <td class='sidewaysclass'>0.00%</td>\n"; // null from API.
+            };
+            
             //htmlstr += '    <td>' + '[Purdy Picture]' + '</td>\n';
             htmlstr += '</tr>\n';
         return htmlstr;
@@ -87,8 +99,14 @@ async function importMarketData() {
         while(coinsDB.length > 0){
             coinsDB.pop();
         } // Destroy previous data.
+        totalMarketCap = 0; // Recalculate
+        totalBasket = 0; // Recalculate
+        totalVolume = 0;
         while(coins.length > 0) {
             coinsDB.push(new Coin(coins.pop()));
+            totalMarketCap += coinsDB[coinsDB.length -1].market_cap;
+            totalBasket +=    coinsDB[coinsDB.length -1].current_price;
+            totalVolume +=    coinsDB[coinsDB.length -1].total_volume;
         }; // cast array to Coin class.
         coinsDB = coinsDB.reverse(); // Undo FILO
         lastSortedBy = 'market_cap_rank'; 
@@ -97,13 +115,21 @@ async function importMarketData() {
     }; // try-catch
 }; // importMarketData()
 
+async function displayMarketCapData(){
+    // Sum total market cap and index value.
+    $('#totalMarketCapText').text('Top 100 Market cap: ' + totalMarketCap.toLocaleString() + ' (' + DENOMINATION + ')');
+    $('#top100Index').text('Crypto100 Index: ' + totalBasket.toLocaleString() + ' (' + DENOMINATION + ')');
+    $('#totalTradingVolume').text('Total 24-hour volume traded: ' + totalVolume.toLocaleString() + ' (' + DENOMINATION + ')');
+};
+
 async function displayMarketData(){
     // Push market data to table
     console.log('Displaying table data.');
     try {
         await importMarketData();
+        displayMarketCapData(); 
         $('.tabletag').html(coinsDB.toString());
-    } catch {
+    } catch (error) {
         console.log('displayMarketData() failure: ' + error);
     } // try-catch
 
@@ -114,15 +140,15 @@ async function updateDenomination(denomString){
     DENOMINATION = denomString;
     displayMarketData();
     $('#priceButton').text('Price (' + DENOMINATION + ')');
-    $('#marketCapButton').text('Market Cap (' + DENOMINATION +')');
-    $('#volumeButton').text('Volume (' + DENOMINATION + '/' + PERIOD + ')');
+    $('#marketCapButton').text('Market Cap (' + DENOMINATION +') {dom}');
+    $('#volumeButton').text('Volume (' + DENOMINATION + '/24h) {dom}');
 } // updateDenomination()
 
 async function updatePeriod(periodString){
     console.log('Updating period to ' + periodString);
     PERIOD = periodString;
     displayMarketData();
-    $('#volumeButton').text('Volume (' + DENOMINATION + '/' + PERIOD + ')');
+    $('#volumeButton').text('Volume (' + DENOMINATION + '/24h) {dom}');
     $('#periodButton').text('Change (' + PERIOD + ')');
 } // updateDenomination()
 

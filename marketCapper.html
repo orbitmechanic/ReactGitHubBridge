@@ -25,6 +25,9 @@
   <div class="jumbotron jumbotron-fluid" id="bragbar">
     <div class="container">
       <h5 class="centered">Top 100 Cryptocurrencies by Market CaPiTaLiZaTiOn</h5>
+      <p class='centered' id='totalMarketCapText'>Total...</p>
+      <p class='centered' id='top100Index'>Index...</p>
+      <p class='centered' id='totalTradingVolume'>Trading volume...</p>
     </div>
   </div>
 
@@ -35,7 +38,7 @@
         <tr>
           <th class='hdr'><button type='button' class='btn' onclick='sortby("market_cap_rank")'>Rank</button></th>
           <th class='hdr text-left'><button type='button' class='btn' onclick='sortby("name")'>Name</button></th>
-          <th class='hdr'><button type='button' class='btn' id='marketCapButton' onclick='sortby("market_cap")'>Market Cap</button></th>
+          <th class='hdr'><button type='button' class='btn' id='marketCapButton' onclick='sortby("market_cap")'>Market Cap (usd){dom}</button></th>
           <th class='hdr' style='align-items:center'>
             <div class='row'>
               <div class='column' style='width:75%'>
@@ -58,7 +61,7 @@
               </div> <!--column-->
             </div> <!--row -->
           </th>
-          <th class='hdr'><button type='button' class='btn' id='volumeButton' onclick='sortby("total_volume")'>Volume (usd/24h)</button></th>
+          <th class='hdr'><button type='button' class='btn' id='volumeButton' onclick='sortby("total_volume")'>Volume (usd/24h) {dom}</button></th>
           <th class='hdr'><button type='button' class='btn' onclick='sortby("circulating_supply")'>Circulating Supply</button></th>
           <th class='hdr' style='align-items:center'>
             <div class='row'>
