@@ -2,7 +2,6 @@
 
 
  .black {
-
   color:#000000;
  }
 
@@ -18,8 +17,7 @@
 
 }
 
-
- .c-white {
+.c-white {
   color:#ffffff;
  }
  
@@ -39,7 +37,6 @@
 } 
 
   .bg-white {
-  
     background-color: #fff;
 
   }
@@ -47,10 +44,8 @@
   /* GRADIENT */
 
    .blue-gr {
-
     background-image: linear-gradient(to right,#008ED4, #45a6d3);
    }
    .black-gr {
-
     background-image: linear-gradient(to right,#1b1b1b, #444444);
    }

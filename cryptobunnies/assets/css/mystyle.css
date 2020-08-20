@@ -1,15 +1,14 @@
 
 @font-face {
-  font-family: "Poppins";
-  src        : url("Poppins-Light.ttf");
+  font-family: "unibomber";
+  src        : url("OldTypewriter.ttf");
 }
 
 body {
-  font-family: Poppins;
+  font-family: unibomber;
   font-weight: 500;
   letter-spacing: 1px; 
 }
-
 
 .navbar-light {
   background: #ffffff;
@@ -33,6 +32,7 @@ html {
 
 p {
   letter-spacing: 1px;
+  line-height: 0.7;
 }
 
 #message {
@@ -44,22 +44,17 @@ p {
 }
 
 .pointer {
-
   cursor: pointer;
-
 }
 
 /*  Alignment */
-
 .no-wrap {
   flex-wrap: nowrap;
 }
 
-
 .item-c {
   align-items: center;
 }
-
 
 .t-inline {
   white-space: nowrap;
@@ -73,7 +68,6 @@ th {
 .va-0 {
   vertical-align: unset;
 }
-
 
 .scale-2 {
   transform: scale(1.6);
@@ -102,7 +96,6 @@ th {
 }
 
 /* SIZING */
-
 .minw-05 {
   width: 5%;
 }
@@ -152,32 +145,25 @@ th {
 }
 
 .vh-100 {
-
   min-height: 100vh;
 }
 
 .vh-10 {
-
   min-height: 10vh;
 }
 
 .vh-15 {
-
   min-height: 15vh;
 }
 
-
 /* BOXES */
-
 #results {
-
   margin  : 10px;
   position: fixed;
   bottom  : 10px;
   z-index : 2000;
   right   : 10px;
 }
-
 
 /* TOOLTIP */
 .tooltip-btn {
@@ -197,7 +183,6 @@ th {
 }
 
 .tooltip.show {
-
   opacity: 1;
 }
 
@@ -206,84 +191,56 @@ th {
 .bs-tooltip-left .arrow::before,
 .bs-tooltip-top .arrow::before {
   border-top-color: #cce5ff;
-
-
 }
 
 /* opacity */
-
 .opacity-on {
-
   opacity: 0;
 }
 
 .opacity-9 {
-
   opacity: 0.9;
-
 }
-
 .opacity-8 {
-
   opacity: 0.8;
-
 }
 
 .opacity-7 {
-
   opacity: 0.7;
-
 }
 
 .opacity-6 {
-
   opacity: 0.6;
-
 }
 
 /* TEXT ALIGMENT */
-
-
 .underline {
-
   text-decoration: underline;
-
 }
 
-
 .ta-l {
-
   text-align: left;
 }
 
 .ta-c {
-
   text-align: center;
-
 }
 
 .ta-r {
-
   text-align: right;
-
 }
 
 .tsp-1 {
   letter-spacing: 1px;
 }
 
-
 .tsp-2 {
   letter-spacing: 2px;
 }
 
 /* SHADOW*/
-
-
 .light-shadow {
-
   text-shadow: 1px 2px 3px #8e8e8e;
-
 }
 
 .light-b-shadow {
@@ -291,24 +248,19 @@ th {
 }
 
 /*BORDER*/
-
 .none-border {
   border: none;
 }
 
 .radius-50 {
-
   border-radius: 50%;
 }
 
 .radius-10 {
-
   border-radius: 10px;
 }
 
-
 /* TRANSITIONS */
-
 .trans-fast {
   transition: all .75s ease;
 }
@@ -322,7 +274,6 @@ th {
 }
 
 /* Text size */
-
 h4 {
   font-size: 1rem;
 }
@@ -331,9 +282,7 @@ h4 {
   font-size: 50%;
 }
 
-
 /* Margin and padding */
-
 .m-0 {
   margin: 0px;
 }
@@ -487,9 +436,7 @@ h4 {
 }
 
 /* EFFECTS ANIMATIONS */
-
 .reflex-box {
-
   -webkit-box-reflect: below 5px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(0%, transparent), to(rgba(250, 250, 250, 0.2)))
 }
 
@@ -517,5 +464,4 @@ h4 {
   opacity  : 0;
   overflow : hidden;
   transform: translateX(90%);
-
 }
