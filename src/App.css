@@ -1,0 +1,82 @@
+* {
+  box-sizing: border-box;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 5vh;
+  min-width: 100vw;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+#backplane{
+  background-image: url('./components/images/Tricorder.jpg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: scroll;
+  background-size: cover;
+  background-color: #282c34;
+  min-height: 90vh;
+  padding: 0px;
+  margin: 0px;
+
+  display: grid;
+  grid-template-columns: repeat(5,1fr);
+  grid-template-rows: repeat(4,1ft);
+  grid-gap: 10px;
+}
+
+.OutputScreen{
+  background-color: lightblue;
+  border-radius: 25px;
+  text-align: center;
+  vertical-align: center;
+  font-size: 25;
+  color: black;
+}
+
+#Screen1{
+  grid-column: 2/3;
+  grid-row: 1/3;
+}
+
+#Screen2{
+  grid-column: 5;
+  grid-row: 1 / 3;
+}
+
+#baseboard{
+  color: wheat;
+  text-align: right;
+  vertical-align: bottom;
+  background-color: #282c34;
+  min-height:5vh;
+  padding: 0px;
+  margin: 0px;
+}
+
+@media only screen and (min-width: 600px) {
+  /* For tablets: */
+  #backplane{
+    background-image: url('./components/images/TransporterRoom.jpg');
+  }  
+}
+
+@media only screen and (min-width: 768px) {
+  /* For desktop: */
+  #backplane{
+    background-image: url('./components/images/RebelBase.jpg');
+  }  
+}
+
+@media only screen and (min-width:780 px){
+  /* derez search buttons */
+  .Sarch {
+    display:none;
+  }
+}
