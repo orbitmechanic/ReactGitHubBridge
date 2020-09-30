@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/static/css/main.3c987faf.chunk.css",
+    "main.js": "/static/js/main.d8236143.chunk.js",
+    "main.js.map": "/static/js/main.d8236143.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.27c1e231.js",
+    "runtime-main.js.map": "/static/js/runtime-main.27c1e231.js.map",
+    "static/css/2.d9ad5f5c.chunk.css": "/static/css/2.d9ad5f5c.chunk.css",
+    "static/js/2.886f8667.chunk.js": "/static/js/2.886f8667.chunk.js",
+    "static/js/2.886f8667.chunk.js.map": "/static/js/2.886f8667.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.0c194bece567bad273a507c82e4f18f1.js": "/precache-manifest.0c194bece567bad273a507c82e4f18f1.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/2.d9ad5f5c.chunk.css.map": "/static/css/2.d9ad5f5c.chunk.css.map",
+    "static/css/main.3c987faf.chunk.css.map": "/static/css/main.3c987faf.chunk.css.map",
+    "static/js/2.886f8667.chunk.js.LICENSE.txt": "/static/js/2.886f8667.chunk.js.LICENSE.txt",
+    "static/media/App.css": "/static/media/watches.80577e0c.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.27c1e231.js",
+    "static/css/2.d9ad5f5c.chunk.css",
+    "static/js/2.886f8667.chunk.js",
+    "static/css/main.3c987faf.chunk.css",
+    "static/js/main.d8236143.chunk.js"
+  ]
+}
