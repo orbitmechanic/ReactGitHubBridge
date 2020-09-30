@@ -1,6 +1,6 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Navbar, Dropdown, DropdownButton}from 'react-bootstrap';
+import {Navbar, Dropdown, DropdownButton, Container, Button}from 'react-bootstrap';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import './App.css';
 
@@ -30,14 +30,14 @@ function App() {
         </DropdownButton>
       </Navbar>
 
-      <Jumbotron id='backplane' fluid>
-        <div className='OutputScreen' id='Screen1'>One</div>
-        <div className='OutputScreen' id='Screen2'>Two</div>
-        <div className='InputButton' id='Button1'>1</div>
-        <div className='InputButton' id='Button2'>2</div>
-        <div className='InputButton' id='Button3'>3</div>
-        <div className='InputButton' id='Button4'>4</div>
-      </Jumbotron>
+      <Container id='backplane' fluid>
+        <Container className='OutputScreen' id='Screen1'>One</Container>
+        <Container className='OutputScreen' id='Screen2'>Two</Container>
+        <Button className='ScreenControl' variant='primary'     id='Button1'>1</Button>
+        <Button className='ScreenControl' variant='secondary'   id='Button2'>2</Button>
+        <Button className='ScreenControl' variant='info'        id='Button3'>3</Button>
+        <Button className='ScreenControl' variant='success'     id='Button4'>4</Button>
+      </Container>
 
       <Jumbotron id='baseboard' fluid>
         <p>orbitmechanic@protonmail.com</p>
