@@ -9,6 +9,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
   <link rel="stylesheet" type="text/css" href="assets/css/spacebunny.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/factoryFrame.css">
   <script src="assets/js/spacebunny.js"></script>
 </head>
 <body class="bg-dark">
@@ -18,8 +19,8 @@
         <p>They're bunnies.  They take up space.</p> 
     </div>
 
-    <div class="d-flex justify-content-center bg-secondary mb-3">
-        <div class="p-4 bg-light text-dark" id='bunnyFrame'>
+    <div class='container-fluid row' id='middleware'>
+        <div class="column p-4 bg-light text-dark" id='bunnyFrame'>
             <div class='part' id='skull'>
                 <div class='part' id='face'></div> <!--face -->
                 <div class='row' id='eyes'>
@@ -114,7 +115,37 @@
                     </div> <!-- pelvis-->
                 </div> <!-- ribs -->
             </div> <!-- skull --> 
-        </div> <!--Width 4-->
+        </div> <!--BunnyFrame-->
+
+        <div class="p-6 bg-light text-dark dnaDiv" id="catDNA">
+            <b>
+                DNA:
+                <!-- Colors -->
+                    <span id="dnabody"></span>
+                    <span id="dnamouth"></span>
+                    <span id="dnaeyes"></span>
+                    <span id="dnaears"></span>
+                
+                    <!-- Cattributes -->
+                    <span id="dnashape"></span>
+                    <span id="dnadecoration"></span>
+                    <span id="dnadecorationMid"></span>
+                    <span id="dnadecorationSides"></span>
+                    <span id="dnadanimation"></span>
+                    <span id="dnaspecial"></span>
+            </b>
+        </div>
+
+        <div class='column' id="catColors">
+            <div class="form-group">
+                <label for="formControlRange">
+                    <b>Head and body</b>
+                    <span class="badge badge-dark ml-2" id="headcode"></span>
+                </label>
+                <input type="range" min="10" max="98" class="form-control-range" id="bodycolor">
+            </div>
+        </div>
+
     </div> <!--flex center justify-->
 
 </body>

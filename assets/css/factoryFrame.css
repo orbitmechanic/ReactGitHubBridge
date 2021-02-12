@@ -1,0 +1,24 @@
+#headerJumbotron{
+    background-image:url('../images/biology.jpg');
+    background-repeat:no-repeat;
+    background-size: cover;
+    border-radius: 0px;
+    color:wheat;
+    margin-bottom: 20px;
+}
+
+#bunnyFrame {
+    margin: 0px;
+    width: 350px;
+    height: 300px;
+    --curvy: 45%;
+}
+
+#footerJumbotron{
+    background-image:url('../images/bunnies/fluffle.jpg');
+    background-repeat:no-repeat;
+    background-size: cover;
+    border-radius: 0px;
+    color:wheat;
+    margin-top: 45px;
+}
